@@ -1,1 +1,1 @@
-from obsitex.engine import ObsidianToLatex
+from obsitex.parser import ObsidianParser

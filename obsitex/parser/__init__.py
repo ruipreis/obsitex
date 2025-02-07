@@ -19,12 +19,15 @@ from obsitex.parser.blocks import (
     Paragraph,
     Section,
 )
+from obsitex.planner import ExecutionPlan
 from obsitex.planner.jobs import AddBibliography, AddHeader, AddText, PlannedJob
 
 
-class MarkdownJobParser:
+class ObsidianParser:
     def __init__(
         self,
+        bibtex_database_path: Optional[Path] = None,
+        implictly_add_bibtex: bool = True,
         out_bitex_path: Optional[Path] = None,
         graphics_folder: Optional[Path] = None,
         job_template: str = DEFAULT_JINJA2_JOB_TEMPLATE,
@@ -40,6 +43,13 @@ class MarkdownJobParser:
         self.bibliography_marker = bibliography_marker
         self.out_bitex_path = out_bitex_path
 
+        # Construct an execution plan, which will collect the jobs to run from
+        # the files and pths provided
+        self.execution_plan = ExecutionPlan(
+            bibtex_database_path=bibtex_database_path,
+            implictly_add_bibtex=implictly_add_bibtex,
+        )
+
         # Extra arguments that should be injected when converting to latex
         self.extra_args = {
             "hlevel_mapping": self.hlevel_mapping,
@@ -54,6 +64,16 @@ class MarkdownJobParser:
 
         # Keep track of the latest header level
         self.latest_parsed_hlevel = 0
+
+    def add_file(self, file_path: Path):
+        self.execution_plan.add_file(file_path)
+
+    def add_dir(self, dir_path: Path):
+        self.execution_plan.add_dir(dir_path)
+
+    def apply_jobs(self):
+        for job in self.execution_plan.iter_jobs():
+            self.parse_job(job)
 
     def to_latex(self) -> str:
         # Create template for job level and main

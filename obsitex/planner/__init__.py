@@ -32,16 +32,13 @@ def parse_yaml_properties(text: str) -> Tuple[str, dict]:
 class ExecutionPlan:
     def __init__(
         self,
-        graphics_path: Optional[Path] = None,
         bibtex_database_path: Optional[Path] = None,
         implictly_add_bibtex: bool = True,
     ):
-        self.graphics_path = graphics_path
         self.bibtex_database_path = bibtex_database_path
         self.implictly_add_bibtex = implictly_add_bibtex
 
         # Check that if the paths are provided, they are valid
-        assure_dir(self.graphics_path)
         assure_file(self.bibtex_database_path)
 
         # Variables to store extracted data
