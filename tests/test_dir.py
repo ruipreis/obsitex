@@ -1,8 +1,8 @@
-from obsitex.planner import ExecutionPlan
-from obsitex.parser import MarkdownJobParser
+import logging
 from pathlib import Path
 
-import logging
+from obsitex.parser import MarkdownJobParser
+from obsitex.planner import ExecutionPlan
 
 logging.basicConfig(level=logging.DEBUG)
 

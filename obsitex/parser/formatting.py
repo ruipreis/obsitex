@@ -1,14 +1,16 @@
-import re
 import copy
+import re
 from typing import Optional
 
 LATEX_SPECIAL_CHARS = r"$%_}&#{"
+
 
 def find_next_index(lst, expr, start=0):
     for i in range(start, len(lst)):
         if expr(lst[i]):
             return i
     return len(lst)
+
 
 def detect_command(line) -> Optional[str]:
     match = re.match(r"\%\%\s*(.*)\s*\%\%", line)

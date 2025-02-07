@@ -1,11 +1,14 @@
-from obsitex.parser.formatting import format_text, detect_command, find_next_index
 import re
 from abc import ABC, abstractmethod
-from typing import Optional, Sequence, Tuple, Type
-import yaml
-from obsitex.constants import SPECIAL_CALLOUTS, CALLOUT_CONFIG_MARKER, QUOTE_MARKER
 from io import StringIO
 from pathlib import Path
+from typing import Optional, Sequence, Tuple, Type
+
+import yaml
+
+from obsitex.constants import CALLOUT_CONFIG_MARKER, QUOTE_MARKER, SPECIAL_CALLOUTS
+from obsitex.parser.formatting import detect_command, find_next_index, format_text
+
 
 class LaTeXBlock(ABC):
     def __init__(self, content, in_latex=False):
@@ -394,18 +397,20 @@ class Figure(AbstractCallout):
         self.position = self.configs.get("position", "H")
         self.centering = self.configs.get("centering", True)
         self.width = self.configs.get("width", 0.5)
-        
+
     def formatted_text(self, **kwargs):
-        graphics_foler:Optional[Path] = kwargs.get("graphics_folder", None)
+        graphics_foler: Optional[Path] = kwargs.get("graphics_folder", None)
 
         if graphics_foler is None:
-            raise ValueError("You defined a figure, but no graphics folder was provided.")
-        
+            raise ValueError(
+                "You defined a figure, but no graphics folder was provided."
+            )
+
         image_path = (graphics_foler / self.target_image).resolve()
 
         if not image_path.exists():
             raise FileNotFoundError(f"Could not find image {image_path}")
-        
+
         content = "\\begin{figure}"
 
         if self.position is not None:
@@ -415,7 +420,7 @@ class Figure(AbstractCallout):
 
         if self.centering:
             content += "\\centering\n"
-        
+
         content += f"\\includegraphics[width={self.width}\\textwidth]{{{image_path}}}\n"
 
         # Format the caption, since it might contain citations
@@ -435,6 +440,7 @@ class Figure(AbstractCallout):
     ) -> Optional[Tuple["LaTeXBlock", int]]:
         return AbstractCallout.detect_block(lines, index, "figure", Figure)
 
+
 class RawLaTeXBlock(LaTeXBlock):
     def __init__(self, content):
         super().__init__(content, in_latex=True)
@@ -451,7 +457,8 @@ class RawLaTeXBlock(LaTeXBlock):
             return RawLaTeXBlock(raw_lines), end_index
 
         return None
-    
+
+
 class TikZBlock(LaTeXBlock):
     def __init__(self, content):
         super().__init__(content, in_latex=True)
@@ -474,10 +481,11 @@ class TikZBlock(LaTeXBlock):
             # Filter out any sort of usepackage
             tikz_content = re.sub(r"\\usepackage.*\n", "", tikz_content)
             tikz_content = re.sub(r"\\usetikzlibrary.*\n", "", tikz_content)
-            
+
             return TikZBlock(tikz_content), end_index
 
         return None
+
 
 PARSEABLE_BLOCKS: Sequence[Type[LaTeXBlock]] = [
     Section,

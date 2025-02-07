@@ -1,21 +1,22 @@
-from obsitex.planner.jobs import PlannedJob, AddHeader, AddText, AddBibliography
+import logging
+from pathlib import Path
+from typing import Optional, Sequence
+
 from obsitex.constants import (
-    DEFAULT_JINJA2_JOB_TEMPLATE,
-    DEFAULT_JINJA2_MAIN_TEMPLATE,
-    DEFAULT_HLEVEL_MAPPING,
     DEFAULT_APPENDIX_MARKER,
     DEFAULT_BIBLIOGRAPHY_MARKER,
+    DEFAULT_HLEVEL_MAPPING,
+    DEFAULT_JINJA2_JOB_TEMPLATE,
+    DEFAULT_JINJA2_MAIN_TEMPLATE,
 )
-from typing import Sequence, Optional
-from pathlib import Path
 from obsitex.parser.blocks import (
-    LaTeXBlock,
     PARSEABLE_BLOCKS,
+    LaTeXBlock,
+    MarkerBlock,
     Paragraph,
     Section,
-    MarkerBlock,
 )
-import logging
+from obsitex.planner.jobs import AddBibliography, AddHeader, AddText, PlannedJob
 
 
 class MarkdownJobParser:
@@ -50,7 +51,9 @@ class MarkdownJobParser:
         self.latest_parsed_hlevel = 0
 
     def to_latex(self) -> str:
-        return "\n\n".join([block.formatted_text(**self.extra_args) for block in self.blocks])
+        return "\n\n".join(
+            [block.formatted_text(**self.extra_args) for block in self.blocks]
+        )
 
     def parse_job(self, job: PlannedJob) -> str:
         if not self.in_appendix:

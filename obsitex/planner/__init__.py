@@ -1,13 +1,13 @@
-from pathlib import Path
-from typing import Optional, Set, Sequence, Tuple
-
-from obsitex.planner.links import find_all_citations, find_all_links
-from obsitex.utils import assure_dir, assure_file, read_file
-from obsitex.planner.jobs import PlannedJob, AddText, AddHeader, AddBibliography
 import logging
 import re
+from pathlib import Path
+from typing import Optional, Sequence, Set, Tuple
 
 import yaml
+
+from obsitex.planner.jobs import AddBibliography, AddHeader, AddText, PlannedJob
+from obsitex.planner.links import find_all_citations, find_all_links
+from obsitex.utils import assure_dir, assure_file, read_file
 
 
 def parse_yaml_properties(text: str) -> Tuple[str, dict]:
@@ -175,14 +175,13 @@ class ExecutionPlan:
                     add_header_job.update_configs(properties)
 
                     self._jobs.append(add_header_job)
-                    
+
                 if clean_text != "":
                     add_text_job = AddText(clean_text)
                     add_text_job.update_configs(properties)
 
                     self._jobs.append(add_text_job)
                     self.add_citations(clean_text)
-
 
                 for link in reversed(links):
                     # Might be pointing to a file in the same folder

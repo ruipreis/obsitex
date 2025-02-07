@@ -1,6 +1,6 @@
 from abc import ABC
-from typing import Set
 from pathlib import Path
+from typing import Set
 
 
 class PlannedJob(ABC):
@@ -13,7 +13,7 @@ class PlannedJob(ABC):
     @property
     def is_in_appendix(self) -> bool:
         return self.configs.get("appendix", False)
-    
+
     def mark_as_appendix(self):
         self.configs["appendix"] = True
 

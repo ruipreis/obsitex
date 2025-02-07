@@ -1,5 +1,5 @@
 import re
-from typing import Set, Any, Sequence, Tuple
+from typing import Any, Sequence, Set, Tuple
 
 
 def find_all_citations(text: str) -> Set[Any]:
