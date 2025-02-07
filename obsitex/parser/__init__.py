@@ -2,6 +2,8 @@ import logging
 from pathlib import Path
 from typing import Optional, Sequence
 
+from jinja2 import Environment
+
 from obsitex.constants import (
     DEFAULT_APPENDIX_MARKER,
     DEFAULT_BIBLIOGRAPHY_MARKER,
@@ -51,6 +53,34 @@ class MarkdownJobParser:
         self.latest_parsed_hlevel = 0
 
     def to_latex(self) -> str:
+        # Create template for job level and main
+        job_template = Environment().from_string(self.job_template)
+        main_template = Environment().from_string(self.main_template)
+
+        # Render each block onto the job template
+        rendered_blocks = "\n\n".join(
+            [
+                job_template.render(
+                    parsed_latex_content=block.formatted_text(**self.extra_args),
+                    **block.metadata,
+                )
+                for block in self.blocks
+            ]
+        )
+
+        # Render the main template with the rendered blocks
+        # the global variables are shared by all blocks, we use the first
+        # block for simplicity
+        if len(self.blocks) > 0:
+            global_configs = self.blocks[0].metadata
+        else:
+            global_configs = {}
+
+        return main_template.render(
+            parsed_latex_content=rendered_blocks,
+            **global_configs,
+        )
+
         return "\n\n".join(
             [block.formatted_text(**self.extra_args) for block in self.blocks]
         )
@@ -61,7 +91,9 @@ class MarkdownJobParser:
 
             # If in appendix, add the appendix marker
             if self.in_appendix:
-                self.blocks.append(MarkerBlock(self.appendix_marker))
+                marker_block = MarkerBlock(self.appendix_marker)
+                marker_block.metadata = job.configs
+                self.blocks.append(marker_block)
                 logging.info("Added appendix marker to the parser.")
 
         # Given a job, returns the corresponding latex code
@@ -100,12 +132,15 @@ class MarkdownJobParser:
                         block.hlevel += self.latest_parsed_hlevel
 
                     found_block = True
+                    block.metadata = job.configs
                     self.blocks.append(block)
                     break
 
             if not found_block:
                 # If remaining, assume it's a paragraph
-                self.blocks.append(Paragraph(lines[curr_i]))
+                paragraph_block = Paragraph(lines[curr_i])
+                paragraph_block.metadata = job.configs
+                self.blocks.append(paragraph_block)
 
             curr_i += 1
 
@@ -114,5 +149,7 @@ class MarkdownJobParser:
         )
 
     def _parse_bibliography(self, job: AddBibliography):
-        self.blocks.append(MarkerBlock(self.bibliography_marker))
+        marker_block = MarkerBlock(self.bibliography_marker)
+        marker_block.metadata = job.configs
+        self.blocks.append(marker_block)
         logging.info("Added bibliography marker to the parser.")

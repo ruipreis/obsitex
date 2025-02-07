@@ -16,6 +16,7 @@ class LaTeXBlock(ABC):
         self.parent = None  # Only Section and Project objects can be parents
         self.in_latex = in_latex
         self._is_after_appendix = False
+        self.metadata = {}
 
     @property
     def is_after_appendix(self):
