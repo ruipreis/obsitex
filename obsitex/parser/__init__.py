@@ -2,6 +2,7 @@ import logging
 from pathlib import Path
 from typing import Optional, Sequence
 
+import bibtexparser
 from jinja2 import Environment
 
 from obsitex.constants import (
@@ -24,6 +25,7 @@ from obsitex.planner.jobs import AddBibliography, AddHeader, AddText, PlannedJob
 class MarkdownJobParser:
     def __init__(
         self,
+        out_bitex_path: Optional[Path] = None,
         graphics_folder: Optional[Path] = None,
         job_template: str = DEFAULT_JINJA2_JOB_TEMPLATE,
         main_template: str = DEFAULT_JINJA2_MAIN_TEMPLATE,
@@ -36,6 +38,7 @@ class MarkdownJobParser:
         self.hlevel_mapping = hlevel_mapping
         self.appendix_marker = appendix_marker
         self.bibliography_marker = bibliography_marker
+        self.out_bitex_path = out_bitex_path
 
         # Extra arguments that should be injected when converting to latex
         self.extra_args = {
@@ -79,10 +82,6 @@ class MarkdownJobParser:
         return main_template.render(
             parsed_latex_content=rendered_blocks,
             **global_configs,
-        )
-
-        return "\n\n".join(
-            [block.formatted_text(**self.extra_args) for block in self.blocks]
         )
 
     def parse_job(self, job: PlannedJob) -> str:
@@ -149,6 +148,30 @@ class MarkdownJobParser:
         )
 
     def _parse_bibliography(self, job: AddBibliography):
+        if self.out_bitex_path is None:
+            raise ValueError("Bibliography was added but no output path was set.")
+
+        # Select the keys to be included in the bibliography, and export
+        with open(job.bibtex_path, "r") as file:
+            bib_database = bibtexparser.load(file)
+
+        # Index the bib tex keys and verify if all are present
+        bib_keys = {entry["ID"]: entry for entry in bib_database.entries}
+        missing_keys = [key for key in job.citations if key not in bib_keys]
+
+        if len(missing_keys) > 0:
+            raise ValueError(
+                f"Missing {len(missing_keys)} keys in bibliography: {missing_keys}"
+            )
+
+        # Write the selected entries to a new BibTeX file
+        new_db = bibtexparser.bparser.BibTexParser()  # Get a new BibDatabase instance
+        new_db.entries = [bib_keys[key] for key in job.citations]
+
+        with open(self.out_bitex_path, "w") as file:
+            bibtexparser.dump(new_db, file)
+
+        # Add the proper marker
         marker_block = MarkerBlock(self.bibliography_marker)
         marker_block.metadata = job.configs
         self.blocks.append(marker_block)
