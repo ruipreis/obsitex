@@ -1,0 +1,77 @@
+
+\documentclass[12pt,a4paper]{report}
+\usepackage{dissertation}
+\usepackage{pgfgantt}
+\makeglossaries
+\makeindex
+
+\logo{EE}{School of Engineering}{}
+\logoB{EE}{School of Engineering}{}
+
+\author{Your Name Here}
+
+\titleA{The Socioeconomic Impact of Duck-Sized}
+\titleB{Horses in Urban Environments}
+
+
+\usepackage[toc,page]{appendix}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+
+\renewcommand{\baselinestretch}{1}
+\bibliographystyle{plainnat}
+
+\begin{document}
+\setlength{\parindent}{0em}
+
+%-- Covers
+\input{covers/Covers}
+
+%-- Document setup
+\newgeometry{right=25mm, left=25mm, top=25mm, bottom=25mm}
+\pagenumbering{roman}
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}
+
+%-- Preamble
+\input{preamble/Copyright}
+\input{preamble/Acknowledgements}
+\input{preamble/StatementofIntegrity}
+\input{preamble/Abstract}
+
+\phantomsection
+\tableofcontents
+
+\cleardoublepage
+\listoffigures
+
+% List of tables
+\renewcommand*{\listtablename}{List of Tables}
+\listoftables
+\clearpage
+
+% Acronyms
+\printglossary[type=\acronymtype,nonumberlist, title={Acronyms}]
+
+% Glossary
+\printglossary[title={Glossary}, nonumberlist]
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+%-- Dissertation 
+{{ parsed_latex_content }}
+
+\printindex
+
+\input{covers/BackCover}
+
+\end{document}
+

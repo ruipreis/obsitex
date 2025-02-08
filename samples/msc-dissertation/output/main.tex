@@ -1,0 +1,153 @@
+
+\documentclass[12pt,a4paper]{report}
+\usepackage{dissertation}
+\usepackage{pgfgantt}
+\makeglossaries
+\makeindex
+
+\logo{EE}{School of Engineering}{}
+\logoB{EE}{School of Engineering}{}
+
+\author{Your Name Here}
+
+\titleA{The Socioeconomic Impact of Duck-Sized}
+\titleB{Horses in Urban Environments}
+
+
+\usepackage[toc,page]{appendix}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+
+\renewcommand{\baselinestretch}{1}
+\bibliographystyle{plainnat}
+
+\begin{document}
+\setlength{\parindent}{0em}
+
+%-- Covers
+\input{covers/Covers}
+
+%-- Document setup
+\newgeometry{right=25mm, left=25mm, top=25mm, bottom=25mm}
+\pagenumbering{roman}
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}
+
+%-- Preamble
+\input{preamble/Copyright}
+\input{preamble/Acknowledgements}
+\input{preamble/StatementofIntegrity}
+\input{preamble/Abstract}
+
+\phantomsection
+\tableofcontents
+
+\cleardoublepage
+\listoffigures
+
+% List of tables
+\renewcommand*{\listtablename}{List of Tables}
+\listoftables
+\clearpage
+
+% Acronyms
+\printglossary[type=\acronymtype,nonumberlist, title={Acronyms}]
+
+% Glossary
+\printglossary[title={Glossary}, nonumberlist]
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+%-- Dissertation 
+\part{Introduction and Background}\label{sec:Introduction_and_Background}
+
+\chapter{Introduction}\label{sec:Introduction}
+
+Urban environments are dynamic ecosystems in which the introduction of novel elements can significantly influence social, economic, and infrastructural development. While the presence of large animals in cities has long been regulated, the potential introduction of duck-sized horses presents unique challenges and opportunities. This study investigates how such creatures could shape urban life, exploring issues such as public perception, economic viability, and potential uses.
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{/Users/ruipreis/Documents/Projects/obsitex/samples/msc-dissertation/images/banner.png}
+\caption{Example of a duck city}
+\end{figure}
+
+
+A random reference \citep{weiFinetunedLanguageModels2022}.
+
+\chapter{Literature Review}\label{sec:Literature_Review}
+
+Although there is no direct research on duck-sized horses, literature on miniature animals in urban settings provides a foundation for analysis. Studies on therapy animals, micro-livestock, and unconventional pets help frame the discussion. Additionally, urban ecology research highlights the potential environmental implications of introducing new species, even those that are artificially scaled down.
+
+
+
+\begin{table}[H]
+\centering
+\caption{Comparison of Various Duck Species, Their Habitats, Lifespans, and Unique Features.}
+\begin{tabular}{lrrr}
+\toprule
+Duck Species & Habitat & Average Lifespan & Notable Feature \\
+\midrule
+Mallard & Lakes, Ponds, Rivers & 5-10 years & Iridescent green head (males) \\
+Wood Duck & Forested Wetlands & 3-4 years & Perches in trees, colorful plumage \\
+Mandarin Duck & East Asian Lakes & 6-7 years & Striking multicolored feathers \\
+Muscovy Duck & Swamps, Farms & 8-12 years & Red facial caruncles \\
+Eider Duck & Coastal Waters & 15-20 years & Soft down feathers used in insulation \\
+Pekin Duck & Domestic/Farms & 5-9 years & Popular breed for duck farming \\
+Harlequin Duck & Rocky Coastal Streams & 10-12 years & Distinctive black and white markings \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\chapter{Methodology}\label{sec:Methodology}
+
+A mixed-methods approach is employed to assess the theoretical integration of duck-sized horses in urban settings. This includes:
+
+
+
+\begin{itemize}
+	\item \textbf{Surveys}: Conducted among urban dwellers to gauge perceptions of miniature horses in public spaces.
+	\item \textbf{Economic Simulations}: Modeled scenarios where duck-sized horses serve as transportation aids, novelty attractions, or companion animals.
+	\item \textbf{Comparative Analysis}: Examining historical cases of animal integration in cities, such as working horses in early industrial societies and modern urban beekeeping initiatives.
+\end{itemize}
+
+
+\part{Findings and Implications}\label{sec:Findings_and_Implications}
+
+\chapter{Findings and Discussion}\label{sec:Findings_and_Discussion}
+
+\section{Economic Viability}\label{sec:Economic_Viability}
+
+Duck-sized horses could have multiple economic applications, such as serving as novelty pets, therapy animals, or even eco-friendly alternatives to scooters in pedestrian zones. However, concerns arise regarding their care, maintenance costs, and the regulatory framework needed to manage them in high-density areas.
+
+\section{Social and Cultural Implications}\label{sec:Social_and_Cultural_Implications}
+
+Public opinion appears divided on the integration of duck-sized horses into urban environments. While some respondents express enthusiasm for their potential as stress-relief animals, others raise concerns about their impact on sanitation, noise levels, and the risk of displacement of existing urban species.
+
+\section{Urban Planning and Infrastructure Challenges}\label{sec:Urban_Planning_and_Infrastructure_Challenges}
+
+Adapting urban spaces to accommodate duck-sized horses would require modifications to sidewalks, public transport systems, and waste management practices. Issues such as designated grazing areas and water access points also emerge as critical considerations.
+
+\chapter{Conclusion}\label{sec:Conclusion}
+
+While the concept of duck-sized horses in urban environments is largely hypothetical, its exploration reveals deeper insights into how cities accommodate non-human life. If such creatures were ever introduced, their economic, social, and infrastructural implications would need to be carefully managed to ensure harmonious integration. Future research may explore the feasibility of genetic engineering to create scalable urban livestock tailored to specific needs.
+
+
+\bibliography{main}                         
+
+
+\printindex
+
+\input{covers/BackCover}
+
+\end{document}

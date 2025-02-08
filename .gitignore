@@ -492,3 +492,5 @@ TSWLatexianTemp*
 
 *.tex
 *.bib
+*.ist
+.DS_Store

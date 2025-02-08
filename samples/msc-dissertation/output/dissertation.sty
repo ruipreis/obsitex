@@ -1,0 +1,180 @@
+\usepackage[portuguese, english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{geometry}
+\geometry{top=0mm,bottom=10mm,right=0mm,left=79mm} % for the title page ; new geometry after
+\usepackage{subcaption}
+\usepackage{adjustbox}
+\usepackage{titling}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\usepackage{afterpage}
+\usepackage{datetime}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{epigraph}
+\usepackage{datetime}
+\usepackage{caption}
+\usepackage[many]{tcolorbox} 
+\usepackage{tabularx}
+\usepackage{leading}
+\usepackage[capitalise]{cleveref} % Create better looking section cross-reference links
+\usepackage[acronym]{glossaries}
+\renewcommand*{\glstextformat}{\textbf}
+\usepackage{float}
+\usepackage{wrapfig}
+
+%-- Space between lines
+\renewcommand{\baselinestretch}{1.5} 
+
+%-- Font News Got T
+\setmainfont{NewsGotT.ttf}
+\setmainfont[
+Ligatures=TeX,
+AutoFakeSlant=0.20,
+BoldFont=NewsGotTBold.ttf
+]{NewsGotT.ttf}
+
+\newfontfamily\NewsGotTLight{NewsGotTLight.ttf}
+
+%-- Cover
+\newcommand{\thelogo}{}
+\newcommand{\logo}[3]{\renewcommand{\thelogo}{
+\includegraphics[width=26mm]{images/logos/UM.jpg}\includegraphics[width=26mm]{images/logos/#1.jpg}
+
+\vspace{7.05mm}
+\leading{16.8pt}
+{\large
+\textbf{University of Minho}
+\\
+{\NewsGotTLight
+#2
+\\
+#3
+}}
+
+\vspace{37.32mm} %43.24mm - 5.92mm
+}}
+
+\newcommand{\thelogoB}{}
+\newcommand{\logoB}[3]{\renewcommand{\thelogoB}{
+\includegraphics[width=26mm]{images/logosB/UM.jpg}\hspace{0.5mm}\includegraphics[width=26mm]{images/logosB/#1.jpg}
+
+\vspace{7.05mm}
+\leading{16.8pt}
+{\large
+\textbf{University of Minho}
+\\
+{\NewsGotTLight
+#2
+\\
+#3
+}}
+
+\vspace{37.32mm} %43.24mm - 5.92mm
+}}
+
+\newcommand{\thetitleA}{}
+\newcommand{\titleA}[1]{\renewcommand{\thetitleA}{#1}}
+
+\newcommand{\thetitleB}{}
+\newcommand{\titleB}[1]{\renewcommand{\thetitleB}{#1}}
+
+\newcommand{\thetitleC}{}
+\newcommand{\titleC}[1]{\renewcommand{\thetitleC}{#1}}
+
+\newcommand{\themasters}{}
+\newcommand{\masters}[1]{\renewcommand{\themasters}{#1 \\}}
+
+\newcommand{\thearea}{}
+\newcommand{\area}[1]{\renewcommand{\thearea}{#1 \\}}
+
+\newcommand{\thesupervisor}{}
+\newcommand{\supervisor}[1]{\renewcommand{\thesupervisor}{#1}}
+
+\newcommand{\thecosupervisor}{}
+\newcommand{\cosupervisor}[1]{\renewcommand{\thecosupervisor}{\textbf{#1}}}
+
+%-- Figures and Tables
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%-- Date
+\def\myear{\ifcase\month\or
+ january\or february\or march\or april\or may\or june\or
+ july\or august\or september\or october\or november\or december\fi
+ \space\number\year}
+ 
+%--Colors 
+\usepackage{color}
+\usepackage{pagecolor}
+
+\definecolor{PANTONECoolGray7C}{HTML}{97999B}
+\definecolor{PANTONE1807C}{HTML}{A4343A}
+\definecolor{blueUM}{HTML}{24A2DA}
+
+%-- Hypersetup
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blueUM,
+    citecolor = blueUM,
+    urlcolor = blueUM
+}
+
+%-- Title format
+\titleformat{\part}[display]
+  {\relax}
+  {\centering\huge\bfseries\partname~\thepart}
+  {0ex}
+  {\centering\Huge\vspace{0ex}\bfseries}
+  
+%\titleformat{\chapter}
+%  {\LARGE\bfseries}{\thechapter}{1em}{}
+  
+\titleformat{\chapter}[display]
+  {\relax}
+  {\Large\bfseries\chaptername~\thechapter}
+  {0ex}
+  {\LARGE\vspace{0ex}\bfseries}
+
+\titleformat{\section}
+  {\Large\bfseries}{\thesection}{1em}{}
+  
+\titleformat{\subsection}
+  {\large\bfseries}{\thesubsection}{1em}{}
+  
+%-- Footnote format
+\ifdefined\deffootnote
+    \deffootnote{.5em}{0em}{\thefootnotemark
+    }
+\else
+    \PassOptionsToPackage{marginal}{footmisc}
+    \RequirePackage{footmisc}
+\fi
+\renewcommand{\footnotelayout}{\scriptsize}
+ 
+%-- Environments
+\newenvironment{backcover}{\begin{titlepage}}{\end{titlepage}}
+
+%-- Indexes
+\usepackage{imakeidx}
+
+\def\Latex{
+	\href{http://www.latex-project.org/}{\LaTeX}
+	\index{\LaTeX}}
+\newcommand{\tug}[1]{
+	\href{http://tug.org/}{#1}
+	\index{TeX!TeX Users Group (TUG)}}
+\newcommand{\TUG}{
+	\tug{TUG}}
+\newcommand{\uminho}[1]{
+     \href{http://www.uminho.pt}{#1}
+     \index{UM!University of Minho}}
