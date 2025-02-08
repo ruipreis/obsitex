@@ -28,7 +28,7 @@ DEFAULT_APPENDIX_MARKER = """
 """
 
 DEFAULT_BIBLIOGRAPHY_MARKER = """
-\\bibliography{references}
+\\bibliography{main}                         
 """
 
 SPECIAL_CALLOUTS = [

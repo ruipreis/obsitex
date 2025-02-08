@@ -1,0 +1,89 @@
+@article{acharBackPainChildren2020,
+ abstract = {Back pain is a relatively common presenting symptom in children and adolescents. Typical causes include muscle strain or spasm, spinal deformities (e.g., Scheuermann kyphosis, adolescent idiopathic scoliosis), spondylolysis, bulging or herniated intervertebral disks, apophysitis of the iliac crest, and functional pain syndromes such as fibromyalgia. Spondyloarthropathies such as ankylosing spondylitis may present with low back pain and stiffness, which are often worse in the morning. Less common but more serious causes include malignancy and infections. The physical examination should include postural inspection, evaluation for tenderness, range of motion, strength testing, and testing for fractures and nerve impingement. Treatment for patients with muscle strain include relative rest, home-based exercises, physical therapy, and limited use of nonsteroidal anti-inflammatory drugs. If findings from the history and physical examination suggest underlying pathology, radiography and laboratory studies are indicated initially; magnetic resonance imaging, computed tomography, or a bone scan may be needed for further evaluation. It is generally accepted that the following factors warrant immediate evaluation: patient age younger than five years, symptoms persisting beyond four weeks, systemic symptoms, nighttime pain, bowel incontinence/urinary retention, or other neurologic symptoms.},
+ author = {Achar, Suraj and Yamanaka, Jarrod},
+ issn = {1532-0650},
+ journal = {Am Fam Physician},
+ keywords = {Adolescent,Anti-Inflammatory Agents Non-Steroidal,Back Pain,Child,Diagnosis Differential,Exercise Therapy,Female,Humans,Magnetic Resonance Imaging,Male,Medical History Taking,Neurologic Examination,Pediatrics,Physical Examination,Risk Assessment,Symptom Assessment,Tomography X-Ray Computed},
+ langid = {english},
+ month = {July},
+ number = {1},
+ pages = {19--28},
+ pmid = {32603067},
+ title = {Back {{Pain}} in {{Children}} and {{Adolescents}}},
+ volume = {102},
+ year = {2020}
+}
+
+@misc{aghajanyanIntrinsicDimensionalityExplains2020,
+ abstract = {Although pretrained language models can be fine-tuned to produce state-of-the-art results for a very wide range of language understanding tasks, the dynamics of this process are not well understood, especially in the low data regime. Why can we use relatively vanilla gradient descent algorithms (e.g., without strong regularization) to tune a model with hundreds of millions of parameters on datasets with only hundreds or thousands of labeled examples? In this paper, we argue that analyzing fine-tuning through the lens of intrinsic dimension provides us with empirical and theoretical intuitions to explain this remarkable phenomenon. We empirically show that common pre-trained models have a very low intrinsic dimension; in other words, there exists a low dimension reparameterization that is as effective for fine-tuning as the full parameter space. For example, by optimizing only 200 trainable parameters randomly projected back into the full space, we can tune a RoBERTa model to achieve 90{\textbackslash}\% of the full parameter performance levels on MRPC. Furthermore, we empirically show that pre-training implicitly minimizes intrinsic dimension and, perhaps surprisingly, larger models tend to have lower intrinsic dimension after a fixed number of pre-training updates, at least in part explaining their extreme effectiveness. Lastly, we connect intrinsic dimensionality with low dimensional task representations and compression based generalization bounds to provide intrinsic-dimension-based generalization bounds that are independent of the full parameter count.},
+ archiveprefix = {arXiv},
+ author = {Aghajanyan, Armen and Zettlemoyer, Luke and Gupta, Sonal},
+ doi = {10.48550/arXiv.2012.13255},
+ eprint = {2012.13255},
+ month = {December},
+ number = {arXiv:2012.13255},
+ primaryclass = {cs},
+ publisher = {arXiv},
+ title = {Intrinsic {{Dimensionality Explains}} the {{Effectiveness}} of {{Language Model Fine-Tuning}}},
+ urldate = {2023-08-11},
+ year = {2020}
+}
+
+@misc{weiChainofThoughtPromptingElicits2023,
+ abstract = {We explore how generating a chain of thought -- a series of intermediate reasoning steps -- significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain of thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain of thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a 540B-parameter language model with just eight chain of thought exemplars achieves state of the art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.},
+ archiveprefix = {arXiv},
+ author = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed and Le, Quoc and Zhou, Denny},
+ eprint = {2201.11903},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language},
+ month = {January},
+ number = {arXiv:2201.11903},
+ primaryclass = {cs},
+ publisher = {arXiv},
+ title = {Chain-of-{{Thought Prompting Elicits Reasoning}} in {{Large Language Models}}},
+ urldate = {2023-10-25},
+ year = {2023}
+}
+
+@misc{weiFinetunedLanguageModels2022,
+ abstract = {This paper explores a simple method for improving the zero-shot learning abilities of language models. We show that instruction tuning -- finetuning language models on a collection of tasks described via instructions -- substantially improves zero-shot performance on unseen tasks. We take a 137B parameter pretrained language model and instruction-tune it on over 60 NLP tasks verbalized via natural language instruction templates. We evaluate this instruction-tuned model, which we call FLAN, on unseen task types. FLAN substantially improves the performance of its unmodified counterpart and surpasses zero-shot 175B GPT-3 on 20 of 25 tasks that we evaluate. FLAN even outperforms few-shot GPT-3 by a large margin on ANLI, RTE, BoolQ, AI2-ARC, OpenbookQA, and StoryCloze. Ablation studies reveal that number of finetuning datasets, model scale, and natural language instructions are key to the success of instruction tuning.},
+ archiveprefix = {arXiv},
+ author = {Wei, Jason and Bosma, Maarten and Zhao, Vincent Y. and Guu, Kelvin and Yu, Adams Wei and Lester, Brian and Du, Nan and Dai, Andrew M. and Le, Quoc V.},
+ eprint = {2109.01652},
+ keywords = {Computer Science - Computation and Language},
+ month = {February},
+ number = {arXiv:2109.01652},
+ primaryclass = {cs},
+ publisher = {arXiv},
+ title = {Finetuned {{Language Models Are Zero-Shot Learners}}},
+ urldate = {2023-10-25},
+ year = {2022}
+}
+
+@misc{zhangAdaptiveBudgetAllocation2023,
+ abstract = {Fine-tuning large pre-trained language models on downstream tasks has become an important paradigm in NLP. However, common practice fine-tunes all of the parameters in a pre-trained model, which becomes prohibitive when a large number of downstream tasks are present. Therefore, many fine-tuning methods are proposed to learn incremental updates of pre-trained weights in a parameter efficient way, e.g., low-rank increments. These methods often evenly distribute the budget of incremental updates across all pre-trained weight matrices, and overlook the varying importance of different weight parameters. As a consequence, the fine-tuning performance is suboptimal. To bridge this gap, we propose AdaLoRA, which adaptively allocates the parameter budget among weight matrices according to their importance score. In particular, AdaLoRA parameterizes the incremental updates in the form of singular value decomposition. Such a novel approach allows us to effectively prune the singular values of unimportant updates, which is essentially to reduce their parameter budget but circumvent intensive exact SVD computations. We conduct extensive experiments with several pre-trained models on natural language processing, question answering, and natural language generation to validate the effectiveness of AdaLoRA. Results demonstrate that AdaLoRA manifests notable improvement over baselines, especially in the low budget settings. Our code is publicly available at https://github.com/QingruZhang/AdaLoRA .},
+ archiveprefix = {arXiv},
+ author = {Zhang, Qingru and Chen, Minshuo and Bukharin, Alexander and He, Pengcheng and Cheng, Yu and Chen, Weizhu and Zhao, Tuo},
+ eprint = {2303.10512},
+ keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
+ month = {March},
+ number = {arXiv:2303.10512},
+ primaryclass = {cs},
+ publisher = {arXiv},
+ title = {Adaptive {{Budget Allocation}} for {{Parameter-Efficient Fine-Tuning}}},
+ urldate = {2023-10-26},
+ year = {2023}
+}
+
+@article{zucchermaglioWhatCountsIllness2016,
+ author = {Zucchermaglio, Cristina and Alby, Francesca and Fatigante, Marilena},
+ doi = {10.4473/TPM23.4.4},
+ issn = {1972-6325},
+ journal = {TPM - Testing, Psychometrics, Methodology in Applied Psychology},
+ langid = {english},
+ number = {23},
+ pages = {471--487},
+ shorttitle = {What Counts as Illness?},
+ title = {What Counts as Illness? {{Anamnesis}} as a Colaborative Activity},
+ urldate = {2023-10-25},
+ year = {2016}
+}

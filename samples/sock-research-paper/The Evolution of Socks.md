@@ -48,19 +48,19 @@ Socks have been an essential part of human attire for thousands of years, evolvi
 
 Socks have undergone numerous transformations throughout history. Key developments include:
 
-- **Ancient** Origins: Early humans used animal skins and plant fibers to protect their feet from harsh environments (Smith, 1998).
-- **Roman Era**: The Romans developed ‘udones,’ early knitted socks, signifying both practical use and social status (Jones, 2003).
-- **Medieval Period**: Wool and silk socks became common among European aristocracy, often adorned with intricate embroidery (Thompson, 2010).
-- **Industrial Revolution**: The invention of knitting machines revolutionized sock production, making them widely accessible (Williams, 2015).
+- **Ancient** Origins: Early humans used animal skins and plant fibers to protect their feet from harsh environments.
+- **Roman Era**: The Romans developed ‘udones,’ early knitted socks, signifying both practical use and social status.
+- **Medieval Period**: Wool and silk socks became common among European aristocracy, often adorned with intricate embroidery [[@acharBackPainChildren2020]].
+- **Industrial Revolution**: The invention of knitting machines revolutionized sock production, making them widely accessible.
 
 
 # Modern Innovations in Sock Manufacturing
 
 Recent advancements in sock technology include:
 
-- **Moisture-Wicking Fabrics**: Synthetic fibers enhance breathability and moisture control (Anderson, 2021).
-- **Compression Socks**: Designed for improved circulation, these socks are commonly used by athletes and medical patients (Lee, 2018).
-- **Sustainable Materials**: Eco-friendly options like bamboo and recycled polyester reduce environmental impact (Green, 2022).
+- **Moisture-Wicking Fabrics**: Synthetic fibers enhance breathability and moisture control.
+- **Compression Socks**: Designed for improved circulation, these socks are commonly used by athletes and medical patients [[@weiFinetunedLanguageModels2022]], [[@aghajanyanIntrinsicDimensionalityExplains2020]].
+- **Sustainable Materials**: Eco-friendly options like bamboo and recycled polyester reduce environmental impact [[@acharBackPainChildren2020]].
 
 # Socks Facts Table
 

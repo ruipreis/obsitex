@@ -6,6 +6,9 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{natbib}
+
+\bibliographystyle{dinat}
 
 \begin{document}
 
@@ -56,7 +59,7 @@ Socks have been an essential part of human attire for thousands of years, evolvi
 
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{/home/ruipreis/Documents/Projects/obsitex/samples/dummy-research-paper/images/sock.png}
+\includegraphics[width=0.4\textwidth]{/Users/ruipreis/Documents/Projects/obsitex/samples/sock-research-paper/images/sock.png}
 \caption{Example of a sock}
 \label{fig:sock}
 \end{figure}
@@ -71,10 +74,10 @@ Socks have undergone numerous transformations throughout history. Key developmen
 
 
 \begin{itemize}
-	\item \textbf{Ancient} Origins: Early humans used animal skins and plant fibers to protect their feet from harsh environments (Smith, 1998).
-	\item \textbf{Roman Era}: The Romans developed ‘udones,’ early knitted socks, signifying both practical use and social status (Jones, 2003).
-	\item \textbf{Medieval Period}: Wool and silk socks became common among European aristocracy, often adorned with intricate embroidery (Thompson, 2010).
-	\item \textbf{Industrial Revolution}: The invention of knitting machines revolutionized sock production, making them widely accessible (Williams, 2015).
+	\item \textbf{Ancient} Origins: Early humans used animal skins and plant fibers to protect their feet from harsh environments.
+	\item \textbf{Roman Era}: The Romans developed ‘udones,’ early knitted socks, signifying both practical use and social status.
+	\item \textbf{Medieval Period}: Wool and silk socks became common among European aristocracy, often adorned with intricate embroidery \citep{acharBackPainChildren2020}.
+	\item \textbf{Industrial Revolution}: The invention of knitting machines revolutionized sock production, making them widely accessible.
 \end{itemize}
 
 
@@ -89,9 +92,9 @@ Recent advancements in sock technology include:
 
 
 \begin{itemize}
-	\item \textbf{Moisture-Wicking Fabrics}: Synthetic fibers enhance breathability and moisture control (Anderson, 2021).
-	\item \textbf{Compression Socks}: Designed for improved circulation, these socks are commonly used by athletes and medical patients (Lee, 2018).
-	\item \textbf{Sustainable Materials}: Eco-friendly options like bamboo and recycled polyester reduce environmental impact (Green, 2022).
+	\item \textbf{Moisture-Wicking Fabrics}: Synthetic fibers enhance breathability and moisture control.
+	\item \textbf{Compression Socks}: Designed for improved circulation, these socks are commonly used by athletes and medical patients \citep{weiFinetunedLanguageModels2022,aghajanyanIntrinsicDimensionalityExplains2020}.
+	\item \textbf{Sustainable Materials}: Eco-friendly options like bamboo and recycled polyester reduce environmental impact \citep{acharBackPainChildren2020}.
 \end{itemize}
 
 
@@ -114,6 +117,10 @@ Environmental Impact & Minimal (natural fibers) & High (synthetics) \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+
+
+\bibliography{main}                         
 
 
 \end{document}
