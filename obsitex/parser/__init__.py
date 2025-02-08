@@ -35,6 +35,7 @@ class ObsidianParser:
         hlevel_mapping: dict = DEFAULT_HLEVEL_MAPPING,
         appendix_marker: str = DEFAULT_APPENDIX_MARKER,
         bibliography_marker: str = DEFAULT_BIBLIOGRAPHY_MARKER,
+        base_hlevel: int = 0,
     ):
         self.job_template = job_template
         self.main_template = main_template
@@ -63,9 +64,14 @@ class ObsidianParser:
         self.blocks: Sequence[LaTeXBlock] = []
 
         # Keep track of the latest header level
-        self.latest_parsed_hlevel = 0
+        self.base_hlevel = base_hlevel
+        self.latest_parsed_hlevel = base_hlevel
 
-    def add_file(self, file_path: Path):
+    def add_file(self, file_path: Path, adjust_hlevel: bool = True):
+        # By default adding a file assumes a single file structure
+        if adjust_hlevel:
+            self.latest_parsed_hlevel = self.base_hlevel - 1
+
         self.execution_plan.add_file(file_path)
 
     def add_dir(self, dir_path: Path):
