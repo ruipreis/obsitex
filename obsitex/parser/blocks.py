@@ -353,7 +353,7 @@ class Table(AbstractCallout):
         self.df = df
 
         # Check for latex specific configurations in the configs
-        position = self.configs.get("position", "H")
+        position = self.configs.get("position", None)
         column_format = self.configs.get(
             "column_format", "l" + "r" * (len(df.columns) - 1)
         )
@@ -395,7 +395,7 @@ class Figure(AbstractCallout):
 
         # Figure latex configs
         self.label = self.configs.get("label", None)
-        self.position = self.configs.get("position", "H")
+        self.position = self.configs.get("position", None)
         self.centering = self.configs.get("centering", True)
         self.width = self.configs.get("width", 0.5)
 
