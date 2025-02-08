@@ -1,0 +1,84 @@
+{# 
+    This is a Jinja2 comment and will not be rendered in the final LaTeX output.
+
+    This document initializes the LaTeX template for the dummy research paper.
+
+    The template is structured as follows:
+    1. Document class and packages
+    2. Title page
+    3. Authors
+    4. Content
+
+    All of these can be customized directly in the properties of the markdown file,
+    or by modifying the Jinja2 template directly.
+
+    The LaTeX template is based on the LNCS template.
+#}
+
+{#
+    Document class and packages - specific to the LNCS template
+
+    The document class is 'llncs' is included by default in some LaTeX distributions.
+    If you don't have it installed, you can download it from the Springer website:
+    https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines
+#}
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\begin{document}
+
+{#
+    Title, authors, abstract, and keywords
+
+    All replaced by the markdown properties in the front matter of the markdown file.
+#}
+\title{
+    {{ title }}
+}
+
+\author{
+{%- for author in authors -%}
+{{ author.name }}{% if author.affiliation %}\inst{ {{author.affiliation | join(',')}} }{% endif %}{% if author.orcid %}\orcidID{ {{ author.orcid }} }{% endif %}{% if not loop.last %} \and{% endif %}
+{% endfor -%}
+}
+
+\institute{
+{%- for institute in institutes %}
+{{ institute.name }}, {{ institute.location }} \\
+    {%- if institute.email or institute.url -%}
+        {%- if institute.email %}
+\email{ {{ institute.email if institute.email is string else institute.email | join(', ') }} } \\
+        {%- endif -%}
+        {%- if institute.url %}
+\url{ {{ institute.url }} }
+        {%- endif -%}
+    {%- endif -%}{%- if not loop.last %} \and
+{%- endif -%}
+{% endfor -%}
+}
+
+{#
+    Automatically build the author running string, based on the last names of the authors.
+#}
+\authorrunning{
+{%- for author in authors -%}
+{% if loop.last %}and {% endif %}{{ author.name.split()[-1] }}{% if not loop.last %}, {% endif %}
+{% endfor -%}
+}
+
+\maketitle
+
+\begin{abstract}
+{{ abstract}}
+
+\keywords{
+{{ keywords | join(' \\and ') }}.
+}
+\end{abstract}
+
+{{ parsed_latex_content }}
+
+\end{document}

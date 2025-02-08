@@ -10,7 +10,18 @@ graphics_folder = Path(__file__).parent / "images"
 output_path = Path(__file__).parent / "output" / "main.tex"
 output_path.parent.mkdir(exist_ok=True, parents=True)
 
-parser = ObsidianParser(graphics_folder=graphics_folder)
+# The parser should generate a working LaTeX file, so we use the
+# template.tex jinja2 latex template file to generate the output,
+# the parser will implictly replace the 'parsed_latex_content' block
+template_file = Path(__file__).parent / "template"/"template.tex"
+
+with open(template_file, "r") as file:
+    template = file.read()
+
+parser = ObsidianParser(
+    graphics_folder=graphics_folder,
+    main_template=template,
+)
 parser.add_file(paper_path)
 
 parser.apply_jobs()
