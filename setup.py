@@ -3,9 +3,12 @@ import setuptools
 with open("requirements.txt", "r") as fr:
     installation_requirements = fr.readlines()
 
+with open("README.md", "r") as fr:
+    long_description = fr.read()
+
 setuptools.setup(
     name="obsitex",
-    version="0.0.0",
+    version="0.0.1",
     author="Rui Reis",
     author_email="ruipedronetoreis12@gmail.com",
     packages=setuptools.find_packages(),
@@ -20,4 +23,6 @@ setuptools.setup(
             "obsitex=obsitex.cli:main",
         ],
     },
+    long_description=long_description,
+    long_description_content_type="text/markdown",
 )

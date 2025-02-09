@@ -2,9 +2,7 @@
 
 ObsiTex is a Python package that automates the conversion of Obsidian Markdown files and folders into structured LaTeX documents. Designed for researchers, students, and technical writers, it ensures a seamless transition from Markdown to a fully formatted LaTeX file, preserving document structure and references.
 
-<p align="center">
-<img src="samples/images/banner.png" alt="ObsiTex" width="70%"/>
-</p>
+![](https://raw.githubusercontent.com/ruipreis/obsitex/refs/heads/main/samples/images/banner.png)
 
 ## Why Use ObsiTex?
 
@@ -12,7 +10,6 @@ ObsiTex is a Python package that automates the conversion of Obsidian Markdown f
 - Preserves headings, lists, equations, figures, citations, and more.
 - Supports **entire folders**, making it ideal for research papers and dissertations.
 - Uses **Jinja2 templates**, allowing full customization of the LaTeX output.
-
 
 
 ## Quick Start
