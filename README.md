@@ -103,7 +103,7 @@ This allows for the creation of tables in markdown, thus easily rendered in Obsi
 
 Similarly to figures, metadata can be added to the table, in order to customize the rendering of the table in LaTeX. This content must be YAML formatted.
 
-### Styling
+#### Styling
 
 These are custom blocks, thus won't have styling in Obsidian unless explictly defined in a CSS snippet. You can define the styling by following the instructions in the [Obsidian documentation](https://help.obsidian.md/Editing+and+formatting/Callouts#Customize+callouts). 
 
