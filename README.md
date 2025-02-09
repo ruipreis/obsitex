@@ -130,8 +130,8 @@ obsitex --input "Motivation Letter.md" \
 
 #### Output Files
 
-- [main.tex](samples/motivation-letter/output/main.tex)
-- [main.pdf](samples/motivation-letter/output/main.pdf)
+- [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/motivation-letter/output/main.tex)
+- [main.pdf](https://github.com/ruipreis/obsitex/tree/main/samples/motivation-letter/output/main.pdf)
 
 
 ### Single File - Research Paper on Socks
@@ -153,9 +153,9 @@ obsitex --input "The Evolution of Socks.md" \
 
 #### Output Files
 
-- [main.tex](samples/sock-research-paper/output/main.tex)
-- [main.bib](samples/sock-research-paper/output/main.bib)
-- [main.pdf](samples/sock-research-paper/output/main.pdf)
+- [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/sock-research-paper/output/main.tex)
+- [main.bib](https://github.com/ruipreis/obsitex/tree/main/samples/sock-research-paper/output/main.bib)
+- [main.pdf](https://github.com/ruipreis/obsitex/tree/main/samples/sock-research-paper/output/main.pdf)
 
 ### Folder - MSc Thesis on Ducks
 
@@ -211,9 +211,9 @@ obsitex --input obsidian-folder \
 
 #### Output Files
 
-- [main.tex](samples/msc-dissertation/output/main.tex)
-- [main.bib](samples/msc-dissertation/output/main.bib)
-- [main.pdf](samples/msc-dissertation/output/main.pdf)
+- [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.tex)
+- [main.bib](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.bib)
+- [main.pdf](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.pdf)
 
 ## Acknowledgments
 
