@@ -11,7 +11,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "",
         "Operating System :: OS Independent",
     ],
     install_requires=installation_requirements,
