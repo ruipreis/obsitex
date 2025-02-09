@@ -16,4 +16,9 @@ setuptools.setup(
     ],
     install_requires=installation_requirements,
     python_requires=">=3.8",
+    entry_points={
+        "console_scripts": [
+            "obsitex=obsitex.cli:main",
+        ],
+    },
 )

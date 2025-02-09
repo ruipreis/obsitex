@@ -22,6 +22,9 @@ from obsitex.parser.blocks import (
 from obsitex.planner import ExecutionPlan
 from obsitex.planner.jobs import AddBibliography, AddHeader, AddText, PlannedJob
 
+# Increase logging level to bibtexparser - avoid warnings
+logging.getLogger("bibtexparser").setLevel(logging.ERROR)
+
 
 class ObsidianParser:
     def __init__(
@@ -82,6 +85,10 @@ class ObsidianParser:
             self.parse_job(job)
 
     def to_latex(self) -> str:
+        # Reset the parser blocks and apply
+        self.blocks = []
+        self.apply_jobs()
+
         # Create template for job level and main
         job_template = Environment().from_string(self.job_template)
         main_template = Environment().from_string(self.main_template)
