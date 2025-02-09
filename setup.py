@@ -8,7 +8,7 @@ with open("README.md", "r") as fr:
 
 setuptools.setup(
     name="obsitex",
-    version="0.0.1",
+    version="0.0.2",
     author="Rui Reis",
     author_email="ruipedronetoreis12@gmail.com",
     packages=setuptools.find_packages(),
@@ -25,4 +25,5 @@ setuptools.setup(
     },
     long_description=long_description,
     long_description_content_type="text/markdown",
+    description="A Python package to convert Obsidian Markdown files and folders into structured LaTeX documents.",
 )
