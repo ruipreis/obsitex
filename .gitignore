@@ -494,3 +494,4 @@ TSWLatexianTemp*
 *.bib
 *.ist
 .DS_Store
+.pypirc
