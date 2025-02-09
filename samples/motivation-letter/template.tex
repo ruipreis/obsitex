@@ -1,0 +1,48 @@
+\documentclass[a4paper, 10pt]{letter}
+
+\makeatletter
+\renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[14\medskipamount]% % change numeric here to increase spacing
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}%
+   \par}
+\makeatother
+
+% Sender's name
+\name{Charlie Beckett}
+
+% Sender's signature
+\signature{\textbf{Charlie Beckett},\\
+    42 Confectionery Lane,\\
+    Sweetville, Candyland.\\
+    charlie.beckett@email.com\\
+    +44 123 456 789}
+
+\address{Motivation Letter}
+
+%-----------------------------------------------------------------------------%
+
+\begin{document}
+
+% Name and address of recipient
+\begin{letter}{
+    {{ person.name }}\\
+    {{ company }}\\
+    {{ address }}
+}
+
+% Opening statement
+\opening{Dear {{ person.honorific }} {{ person.name }},}
+
+{{ parsed_latex_content }}
+
+\closing{Yours sincerely,}
+
+\end{letter}
+\end{document}
