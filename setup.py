@@ -8,7 +8,7 @@ with open("README.md", "r") as fr:
 
 setuptools.setup(
     name="obsitex",
-    version="0.0.4",
+    version="0.0.5",
     author="Rui Reis",
     author_email="ruipedronetoreis12@gmail.com",
     packages=setuptools.find_packages(),
