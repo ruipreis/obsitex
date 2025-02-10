@@ -48,7 +48,7 @@ class ObsidianParser:
         self.appendix_marker = appendix_marker
         self.bibliography_marker = bibliography_marker
         self.out_bitex_path = out_bitex_path
-        self.parseable_blocks = default_parseable_blocks + custom_blocks
+        self.parseable_blocks = custom_blocks + default_parseable_blocks
 
         # Construct an execution plan, which will collect the jobs to run from
         # the files and pths provided

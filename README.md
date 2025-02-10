@@ -25,6 +25,7 @@ ObsiTex is a Python package that automates the conversion of Obsidian Markdown f
   - [Single File - Motivation Letter](#single-file---motivation-letter-for-willy-wonkas-chocolate-factory)
   - [Single File - Research Paper on Socks](#single-file---research-paper-on-socks)
   - [Folder - MSc Thesis on Ducks](#folder---msc-thesis-on-ducks)
+  - [Bring Your Own Blocks](#bring-your-own-blocks)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
 
@@ -230,6 +231,17 @@ obsitex --input obsidian-folder \
 - [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.tex)
 - [main.bib](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.bib)
 - [main.pdf](https://github.com/ruipreis/obsitex/tree/main/samples/msc-dissertation/output/main.pdf)
+
+### Bring Your Own Blocks
+
+Learn how to create parsers for custom blocks in the `samples/byob` folder. This will allow you to add custom blocks to the parser, and thus customize the LaTeX output to your needs.
+
+This example adds support for line breaks and warnings in the LaTeX output, by creating custom blocks for these elements.
+
+#### Output Files
+
+- [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/byob/output/main.tex)
+- [main.pdf](https://github.com/ruipreis/obsitex/tree/main/samples/byob/output/main.pdf)
 
 ## Acknowledgments
 
