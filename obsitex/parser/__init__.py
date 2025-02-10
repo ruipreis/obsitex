@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import Optional, Sequence
+from typing import Optional, Sequence, Type
 
 import bibtexparser
 from jinja2 import Environment
@@ -39,6 +39,8 @@ class ObsidianParser:
         appendix_marker: str = DEFAULT_APPENDIX_MARKER,
         bibliography_marker: str = DEFAULT_BIBLIOGRAPHY_MARKER,
         base_hlevel: int = 0,
+        custom_blocks: Sequence[Type[LaTeXBlock]] = [],
+        default_parseable_blocks: Sequence[Type[LaTeXBlock]] = PARSEABLE_BLOCKS,
     ):
         self.job_template = job_template
         self.main_template = main_template
@@ -46,6 +48,7 @@ class ObsidianParser:
         self.appendix_marker = appendix_marker
         self.bibliography_marker = bibliography_marker
         self.out_bitex_path = out_bitex_path
+        self.parseable_blocks = custom_blocks + default_parseable_blocks
 
         # Construct an execution plan, which will collect the jobs to run from
         # the files and pths provided
@@ -154,7 +157,7 @@ class ObsidianParser:
         while curr_i < len(lines):
             found_block = False
 
-            for block_class in PARSEABLE_BLOCKS:
+            for block_class in self.parseable_blocks:
                 block_instance = block_class.detect_block(lines, curr_i)
 
                 if block_instance is not None:

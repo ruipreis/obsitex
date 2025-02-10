@@ -492,7 +492,7 @@ class TikZBlock(AbstractCodeBlock):
 
 class PythonBlock(AbstractCodeBlock):
     def formatted_text(self, **kwargs):
-        return f"\\begin{{lstlisting}}[language=Python]\n{self.content}\\end{{lstlisting}}\n"
+        return f"\\begin{{lstlisting}}[language=Python,breaklines=true]\n{self.content}\n\\end{{lstlisting}}\n"
 
     @staticmethod
     def detect_block(
