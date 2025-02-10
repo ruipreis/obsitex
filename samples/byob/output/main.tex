@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\begin{document}
+
+\title{
+    Bring Your Own Blocks
+}
+\date{}
+\maketitle
+
+Using \texttt{ObsiTex} you can add your custom parsing blocks to the markdown parser. This is useful if you want to add custom elements to your markdown files that are not supported by the standard markdown syntax.
+
+
+
+\section{Line Break}\label{sec:Line_Break}
+
+
+
+\texttt{ObsiTex} doesn't support line breaks, but they might be added by creating a custom parser, as follows:
+
+
+
+\texttt{}`python
+
+from obsitex.blocks import LaTeXBlock
+
+
+
+class LineBreakBlock(LaTeXBlock):
+
+    def \_\_init\_\_(self):
+
+        super().\_\_init\_\_("\\newpage", in\_latex=True)
+
+
+
+    @staticmethod
+
+    def detect\_block(lines, index):
+
+        if lines{[index]}.startswith("---"):
+
+            return LineBreakBlock(), index + 1
+
+
+
+\section{Add the custom block to the parser}\label{sec:Add_the_custom_block_to_the_parser}
+
+from obsitex import ObsidianParser
+
+
+
+parser = ObsidianParser(custom\_blocks={[LineBreakBlock]})
+
+\texttt{}`
+
+
+
+\end{document}
