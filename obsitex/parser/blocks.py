@@ -442,50 +442,63 @@ class Figure(AbstractCallout):
         return AbstractCallout.detect_block(lines, index, "figure", Figure)
 
 
-class RawLaTeXBlock(LaTeXBlock):
-    def __init__(self, content):
-        super().__init__(content, in_latex=True)
+class AbstractCodeBlock(LaTeXBlock):
+    def __init__(self, content: str, language: str, in_latex: bool = True):
+        super().__init__(content, in_latex=in_latex)
+        self.language = language
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(content="{self.content}", language="{self.language}")'
+
+    @staticmethod
+    def detect_block(
+        lines: Sequence[str],
+        index: int,
+        language: str,
+        instance_class: Type["LaTeXBlock"],
+    ) -> Optional[Tuple["LaTeXBlock", int]]:
+        if lines[index].startswith(f"```{language}"):
+            end_index = find_next_index(
+                lines, lambda line: line.startswith("```"), index + 1
+            )
+            raw_lines = lines[index + 1 : end_index]
+            return instance_class("\n".join(raw_lines), language), end_index
+
+        return None
+
+
+class RawLaTeXBlock(AbstractCodeBlock):
+    @staticmethod
+    def detect_block(
+        lines: Sequence[str], index: int
+    ) -> Optional[Tuple["LaTeXBlock", int]]:
+        return AbstractCodeBlock.detect_block(lines, index, "latex", RawLaTeXBlock)
+
+
+class TikZBlock(AbstractCodeBlock):
+    def formatted_text(self, **kwargs):
+        self.content = self.content.replace("\\begin{document}", "")
+        self.content = self.content.replace("\\end{document}", "")
+        self.content = re.sub(r"\\usepackage.*\n", "", self.content)
+        self.content = re.sub(r"\\usetikzlibrary.*\n", "", self.content)
+        return super().formatted_text(**kwargs)
 
     @staticmethod
     def detect_block(
         lines: Sequence[str], index: int
     ) -> Optional[Tuple["LaTeXBlock", int]]:
-        if lines[index].startswith("```latex"):
-            end_index = find_next_index(
-                lines, lambda line: line.startswith("```"), index + 1
-            )
-            raw_lines = lines[index + 1 : end_index]
-            return RawLaTeXBlock(raw_lines), end_index
-
-        return None
+        return AbstractCodeBlock.detect_block(lines, index, "tikz", TikZBlock)
 
 
-class TikZBlock(LaTeXBlock):
-    def __init__(self, content):
-        super().__init__(content, in_latex=True)
+class PythonBlock(AbstractCodeBlock):
+    def formatted_text(self, **kwargs):
+        return f"\\begin{{lstlisting}}[language=Python]\n{self.content}\\end{{lstlisting}}\n"
 
     @staticmethod
     def detect_block(
         lines: Sequence[str], index: int
     ) -> Optional[Tuple["LaTeXBlock", int]]:
-        if lines[index].startswith("```tikz"):
-            end_index = find_next_index(
-                lines, lambda line: line.startswith("```"), index + 1
-            )
-            raw_lines = lines[index + 1 : end_index]
-            tikz_content = "\n".join(raw_lines)
-
-            # Remove tikz directive that are necessary to render in obsidian
-            tikz_content = tikz_content.replace("\\begin{document}", "")
-            tikz_content = tikz_content.replace("\\end{document}", "")
-
-            # Filter out any sort of usepackage
-            tikz_content = re.sub(r"\\usepackage.*\n", "", tikz_content)
-            tikz_content = re.sub(r"\\usetikzlibrary.*\n", "", tikz_content)
-
-            return TikZBlock(tikz_content), end_index
-
-        return None
+        return AbstractCodeBlock.detect_block(lines, index, "python", PythonBlock)
 
 
 PARSEABLE_BLOCKS: Sequence[Type[LaTeXBlock]] = [
@@ -498,4 +511,5 @@ PARSEABLE_BLOCKS: Sequence[Type[LaTeXBlock]] = [
     Figure,
     RawLaTeXBlock,
     TikZBlock,
+    PythonBlock,
 ]
