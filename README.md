@@ -12,6 +12,22 @@ ObsiTex is a Python package that automates the conversion of Obsidian Markdown f
 - Uses **Jinja2 templates**, allowing full customization of the LaTeX output.
 
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Supported Elements](#supported-elements)
+  - [Citations](#citations)
+  - [Callouts](#callouts)
+    - [Figure](#figure)
+    - [Table](#table)
+    - [Styling](#styling)
+- [Samples](#samples)
+  - [Single File - Motivation Letter](#single-file---motivation-letter-for-willy-wonkas-chocolate-factory)
+  - [Single File - Research Paper on Socks](#single-file---research-paper-on-socks)
+  - [Folder - MSc Thesis on Ducks](#folder---msc-thesis-on-ducks)
+- [Acknowledgments](#acknowledgments)
+- [License](#license)
+
 ## Quick Start
 
 To install ObsiTex, use pip:
