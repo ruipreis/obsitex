@@ -238,6 +238,14 @@ Learn how to create parsers for custom blocks in the `samples/byob` folder. This
 
 This example adds support for line breaks and warnings in the LaTeX output, by creating custom blocks for these elements.
 
+You can only use this feature if using the python library. To run this sample, use the following command:
+
+```bash
+cd samples/byob;
+
+python run_sample.py;
+```
+
 #### Output Files
 
 - [main.tex](https://github.com/ruipreis/obsitex/tree/main/samples/byob/output/main.tex)
